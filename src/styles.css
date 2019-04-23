@@ -10,6 +10,10 @@ footer {
     width: 100%;
 }
 
+.login-button {
+    margin-top: 20px;
+}
+
 #chat-messages {
     height: 300px;
     border: 1px solid gray;

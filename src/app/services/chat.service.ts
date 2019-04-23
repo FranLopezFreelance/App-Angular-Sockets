@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WebsocketService } from './websocket.service';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class ChatService {
 
   sendMessage( message: string ) {
 
+    // const messageObj = JSON.parse( message );
     const payload = {
-      user : 'Francisco',
+      user: this.webSocketService.getUser().name,
       text: message
     };
 
@@ -21,10 +23,13 @@ export class ChatService {
 
   }
 
+  getPrivateMessage() {
+    return this.webSocketService.listen('new-private-message');
+  }
+
   getMessages() {
 
     // Retorno el Observable que devuelve el listen
     return this.webSocketService.listen('new-message');
-
   }
 }

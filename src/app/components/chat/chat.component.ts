@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ChatService } from '../../services/chat.service';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-chat',
@@ -13,6 +14,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   msgSubscription: Subscription;
   messages: any[] = [];
   messagesBox: HTMLElement;
+
+  @Input() user: string;
 
   constructor(
     public chatService: ChatService
